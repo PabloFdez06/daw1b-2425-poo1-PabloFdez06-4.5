@@ -166,14 +166,12 @@ class Tiempo(var hora: Int, var min: Int, var seg: Int) {
         val segundosActuales = obtenerSegundos()
         val comparacionSegundos = t.obtenerSegundos()
 
-        var valorARetornar: Int? = null
+        var valorARetornar = 0
 
         if (segundosActuales < comparacionSegundos) {
             valorARetornar = -1
         } else if (segundosActuales > comparacionSegundos) {
             valorARetornar = 1
-        } else {
-            valorARetornar = 0
         }
         return valorARetornar // podriamos retornar directamente -1 1 o 0, pero lo prefiero asi
 
@@ -191,10 +189,12 @@ class Tiempo(var hora: Int, var min: Int, var seg: Int) {
      *
      * @param t El objeto `Tiempo` cuyo tiempo será copiado.
      */
-    fun copiar(t: Tiempo) {
+    fun copiar(t: Tiempo): Tiempo {
         this.hora = t.hora
         this.min = t.min
         this.seg = t.seg
+
+        return t
     }
 
     /**
